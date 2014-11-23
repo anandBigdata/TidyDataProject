@@ -107,4 +107,3 @@ tidyData <- dcast(meltData,Subject+Activity_Label ~ variable, mean)
 
 #Write tidy data to file tidy_data.txt
 write.table(tidyData, file="./data/tidy_data.txt",row.name=FALSE)
-
