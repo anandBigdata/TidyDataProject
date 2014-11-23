@@ -52,15 +52,3 @@ Review README.md for details
 3. Uses descriptive activity names to name the activities in the data set.
 4. Appropriately labels the data set with descriptive variable names.
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
- 
-
-### Overview of variables and steps - "run_analysis.R"
-
--	Installs and loads "data.table" and "reshape2" packages.
--	Reads and loads activity_labels, features, x_test, y_test, subject_test, x_train, y_train, subject_train text files into activityLabels, features, xTest, yTest, subTest, xTrain, yTrain and subTrain data frames.
--	meanStdFeatures variable holds those features that have mean or std in them.
--	Set names and process test data to get a combined test data set. testData variable holds the combined test data from xTest, yTest and subTest datasets.
--	Set names and process test data to get a combined train data set. trainData variable holds the combined test data from xTrain, yTrain and subTrain datasets.
--	testTrainData rowbinds testData and trainData to get a combined dataset.
--	meltData variable holds the melted data with id and measures.
--	tidyData variable holds tidy data that is written out to ~/data/tidy_data.txt
