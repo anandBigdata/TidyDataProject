@@ -1,7 +1,7 @@
 ###CodeBook
 This is a code book that describes the variables, the data, and any transformations or work that you performed to clean up the data.
 
-### The data source
+###Data source
 
 Original data: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
@@ -41,22 +41,26 @@ The following files are available for the train and test data. Their description
 
 -	'train/Inertial Signals/body_gyro_x_train.txt': The angular velocity vector measured by the gyroscope for each window sample. The units are radians/second.
 
-### Transformation details
+### Steps to get tidy data set 
 
-There are 5 steps involved:
+Review README.md for details
+
+###Overview of run_analysis.R script 
 
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement.
-3. Uses descriptive activity names to name the activities in the data set
-4. Appropriately labels the data set with descriptive activity names.
-5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+3. Uses descriptive activity names to name the activities in the data set.
+4. Appropriately labels the data set with descriptive variable names.
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+ 
 
-### How run_analysis.R implements the above steps:
+### Overview of variables and steps - "run_analysis.R"
 
--	Require reshapre2 and data.table librareis.
--	Load both test and train data
--	Load the features and activity labels.
--	Extract the mean and standard deviation column names and data.
--	Process the data. There are two parts processing test and train data respectively.
--	Merge data set.
--	create tidy data output into a local working directory folder.
+-	Installs and loads "data.table" and "reshape2" packages.
+-	Reads and loads activity_labels, features, x_test, y_test, subject_test, x_train, y_train, subject_train text files into activityLabels, features, xTest, yTest, subTest, xTrain, yTrain and subTrain data frames.
+-	meanStdFeatures variable holds those features that have mean or std in them.
+-	Set names and process test data to get a combined test data set. testData variable holds the combined test data from xTest, yTest and subTest datasets.
+-	Set names and process test data to get a combined train data set. trainData variable holds the combined test data from xTrain, yTrain and subTrain datasets.
+-	testTrainData rowbinds testData and trainData to get a combined dataset.
+-	meltData variable holds the melted data with id and measures.
+-	tidyData variable holds tidy data that is written out to ~/data/tidy_data.txt
